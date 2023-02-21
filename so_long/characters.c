@@ -6,38 +6,38 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 12:48:00 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/21 17:33:00 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:52:33 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_char(t_l *l)
+int check_char(t_sl *sl)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (l->map[i])
+	while (sl->map[i])
 	{
 		j = 0;
-		while (l->map[i][j])
+		while (sl->map[i][j])
 		{
-			if (l->map[i][j] == 'P')
-				l->player++;
-			if (l->map[i][j] == 'C')
-				l->coins++;
-			if (l->map[i][j] == 'E')
-				l->exit++;
+			if (sl->map[i][j] == 'P')
+				sl->p++;
+			if (sl->map[i][j] == 'C')
+				sl->c++;
+			if (sl->map[i][j] == 'E')
+				sl->e++;
 			j++;
 		}
 		i++;
 	}
-	if (l->player != 1)
+	if (sl->p != 1)
 		return (-1);
-	if (l->coins == 0)
+	if (sl->c == 0)
 		return (-1);
-	if (l->exit != 1)
+	if (sl->e != 1)
 		return (-1);
 	return (0);
 }

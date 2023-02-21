@@ -6,39 +6,39 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:28:25 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/21 17:51:00 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:57:13 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void find_player(t_l *l)
+void find_player(t_sl *sl)
 {
 
-	l->y = 0;
-	while (l->map[l->y])
+	sl->py = 0;
+	while (sl->map[sl->py])
 	{
-		l->x = 0;
-		while (l->map[l->y][l->x])
+		sl->px = 0;
+		while (sl->map[sl->py][sl->px])
 		{
-			if (l->map[l->y][l->x] == 'P')
+			if (sl->map[sl->py][sl->px] == 'P')
 				return;
-			l->x++;
+			sl->px++;
 		}
-		l->y++;
-		// printf("%d\n",l->x);
-		// printf("%d\n",l->y);
+		sl->py++;
+		// printf("%d\n",sl->x);
+		// printf("%d\n",sl->y);
 	}
 }
 
-int key_hook(int key,t_mlx *mlx)
+int key_hook(int key,t_sl *sl)
 {
-	find_player(mlx->map);
+	find_player(sl);
 	if (key == 53)
-		ft_close(mlx);
+		ft_close(sl);
 	else
-		moves(key,mlx->map);
-	mlx_clear_window(mlx->mlx, mlx->win);
-	put_img(mlx->map,mlx);
+		moves(key,sl);
+	mlx_clear_window(sl->mlx, sl->win);
+	put_img(sl);
 	return (0);
 }

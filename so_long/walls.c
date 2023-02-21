@@ -6,13 +6,13 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:32:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/21 11:36:31 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:56:23 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_first_w(char *line, t_l *l)
+int	ft_first_w(char *line, t_sl *sl)
 {
 	int i;
 
@@ -23,12 +23,12 @@ int	ft_first_w(char *line, t_l *l)
 			return (0);
 		i++;
 	}
-	if (i != l->columns)
+	if (i != sl->columns)
 		return (0);
 	return (1);
 }
 
-int	ft_sides(char *line, t_l *l)
+int	ft_sides(char *line, t_sl *sl)
 {
 	int i;
 
@@ -42,7 +42,7 @@ int	ft_sides(char *line, t_l *l)
 			return (0);
 		i++;
 	}
-	if (line[i - 1] != '1' || i != l->columns)
+	if (line[i - 1] != '1' || i != sl->columns)
 		return (0);
 	return (1);
 }
@@ -54,7 +54,7 @@ int	s_valid(char c)
 		return (0);
 }
 
-int	ft_last(char *line, t_l *l)
+int	ft_last(char *line, t_sl *sl)
 {
 	int i;
 
@@ -65,7 +65,7 @@ int	ft_last(char *line, t_l *l)
 			return (0);
 		i++;
 	}
-	if (i != l->columns)
+	if (i != sl->columns)
 		return (0);
 	return (1);
 }

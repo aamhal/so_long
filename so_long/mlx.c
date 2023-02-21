@@ -6,53 +6,53 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 15:04:57 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/21 17:50:20 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:54:43 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void put_img(t_l *l, t_mlx *mlx)
+void put_img(t_sl *sl)
 {
-	mlx->x = 0;
-	mlx->y = 0;
+	sl->x = 0;
+	sl->y = 0;
 
-	while (l->map[mlx->y])
+	while (sl->map[sl->y])
 	{
-		mlx->x = 0;
-		while (l->map[mlx->y][mlx->x])
+		sl->x = 0;
+		while (sl->map[sl->y][sl->x])
 		{
-			if (l->map[mlx->y][mlx->x] == 'P')
-				put_player(mlx);
-			if (l->map[mlx->y][mlx->x] == 'C')
-				put_coin(mlx);
-			if (l->map[mlx->y][mlx->x] == 'E')
-				put_exit(mlx);
-			if (l->map[mlx->y][mlx->x] == '0')
-				put_sky(mlx);
-			if (l->map[mlx->y][mlx->x] == '1')
-				put_wall(mlx);
-			mlx->x++;
+			if (sl->map[sl->y][sl->x] == 'P')
+				put_player(sl);
+			if (sl->map[sl->y][sl->x] == 'C')
+				put_coin(sl);
+			if (sl->map[sl->y][sl->x] == 'E')
+				put_exit(sl);
+			if (sl->map[sl->y][sl->x] == '0')
+				put_sky(sl);
+			if (sl->map[sl->y][sl->x] == '1')
+				put_wall(sl);
+			sl->x++;
 		}
-		mlx->y++;
+		sl->y++;
 	}
 }
 
-int win_view(t_l *l,t_mlx *mlx)
+int win_view(t_sl *sl)
 {	
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx,l->columns * 64,l->rows * 64,"so_long");
+	sl->mlx = mlx_init();
+	sl->win = mlx_new_window(sl->mlx,sl->columns * 64,sl->rows * 64,"so_long");
 	
-	put_img(l,mlx);
-	mlx_hook(mlx->win, 2, 0, key_hook, mlx);
-	mlx_hook(mlx->win, 17, 0, ft_close, mlx);
-	mlx_loop(mlx->mlx);
+	put_img(sl);
+	mlx_hook(sl->win, 2, 0, key_hook, sl);
+	mlx_hook(sl->win, 17, 0, ft_close, sl);
+	mlx_loop(sl->mlx);
 	return (0);
 }
 
-int ft_close(t_mlx *mlx)
+int ft_close(t_sl *sl)
 {
-	mlx_destroy_window(mlx->mlx,mlx->win);
+	mlx_destroy_window(sl->mlx,sl->win);
 	exit(1);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:57:00 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/21 17:49:38 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/21 18:57:43 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int R_C_count(char *av, t_l *l)
+int R_C_count(char *av, t_sl *sl)
 {
     char *tmp;
     int fd;
@@ -22,7 +22,7 @@ int R_C_count(char *av, t_l *l)
     if (fd == -1)
         return (-1);
     tmp = get_next_line(fd);
-    l->columns = ft_strlen(tmp) - 1;
+    sl->columns = ft_strlen(tmp) - 1;
     i = 0;
     while (tmp)
     {
@@ -30,7 +30,7 @@ int R_C_count(char *av, t_l *l)
         i++;
         tmp = get_next_line(fd);
     }
-    l->rows = i;
+    sl->rows = i;
     close (fd);
     return (0);
 }
@@ -57,7 +57,7 @@ int check_extension(char *ber)
     return (0);
 }
 
-int     check_sides(char *av, t_l *l)
+int     check_sides(char *av, t_sl *sl)
 {
     int fd;
     int i;
@@ -66,48 +66,46 @@ int     check_sides(char *av, t_l *l)
 	fd = open(av, O_RDONLY, 0777);
     if (fd == -1)
         return (-1);
-    l->map = malloc((l->rows + 1) * sizeof(char *));
-    if(!l->map)
+    sl->map = malloc((sl->rows + 1) * sizeof(char *));
+    if(!sl->map)
     	return (-1);
-	l->map[l->rows] = 0;
-	l->map[0] = get_next_line(fd);
-	if(!ft_first_w(l->map[0], l))
+	sl->map[sl->rows] = 0;
+	sl->map[0] = get_next_line(fd);
+	if(!ft_first_w(sl->map[0], sl))
 		return (-1);
-	while (i < l->rows - 1)
+	while (i < sl->rows - 1)
 	{
-		l->map[i] = get_next_line(fd);
-		if(!ft_sides(l->map[i], l))
+		sl->map[i] = get_next_line(fd);
+		if(!ft_sides(sl->map[i], sl))
 			return (-1);
 		i++;
 	}
-   l->map[i] = get_next_line(fd);
-	if(!ft_last(l->map[i], l))
+   sl->map[i] = get_next_line(fd);
+	if(!ft_last(sl->map[i], sl))
 		return (-1);
 	return (0);
 }
 
-int check_map(char **av, t_l *l)
+int check_map(char **av, t_sl *sl)
 {
     if (check_extension(av[1]) == -1)
         return (-1);
-    R_C_count(av[1],l);
-    if (check_sides(av[1],l) == -1)
+    R_C_count(av[1],sl);
+    if (check_sides(av[1],sl) == -1)
         return (-1);
-    if (check_char(l) == -1)
+    if (check_char(sl) == -1)
         return (-1);
     return(0);
 }
 
 int main(int ac, char **av)
 {
-    t_l l;
-    t_mlx mlx;
+    t_sl sl;
 
     if (ac != 2)
         return (-1);
-    if(check_map(av, &l) == -1)
+    if(check_map(av, &sl) == -1)
         return(-1);
-    mlx.map = &l;
-    win_view(&l, &mlx);
+    win_view(&sl);
     return (0);
 }
