@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 15:04:57 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 15:50:40 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/02 14:58:54 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,15 @@ void	des_img(t_sl *sl)
 
 void	put_monster(t_sl *sl)
 {
+	sl->sky = mlx_xpm_file_to_image(sl->mlx, "img/sky.xpm", \
+	&sl->weight, &sl->hight);
 	sl->monster = mlx_xpm_file_to_image(sl->mlx, "img/monster.xpm", \
 	&sl->weight, &sl->hight);
+	if (!sl->sky ||!sl->monster)
+	{
+		ft_free(sl->map);
+		exit(1);
+	}
 	mlx_put_image_to_window(sl->mlx, sl->win, sl->sky, \
 	sl->x * SIZE, sl->y * SIZE);
 	mlx_put_image_to_window(sl->mlx, sl->win, sl->monster, \

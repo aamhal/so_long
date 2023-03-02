@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 15:04:57 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/26 13:25:23 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/02 14:52:09 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	des_img(t_sl *sl)
 
 void	put_img(t_sl *sl)
 {
-	sl->x = 0;
 	sl->y = 0;
 	while (sl->map[sl->y])
 	{
@@ -56,7 +55,7 @@ int	ft_close(t_sl *sl)
 int	win_view(t_sl *sl)
 {	
 	sl->mlx = mlx_init();
-	sl->win = mlx_new_window(sl->mlx, sl->columns * 64, \
+	sl->win = mlx_new_window(sl->mlx, sl->columns * SIZE, \
 	sl->rows * SIZE, "so_long");
 	put_img(sl);
 	sl->moves = 1;

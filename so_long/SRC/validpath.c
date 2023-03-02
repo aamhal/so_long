@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:49:10 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/27 19:01:26 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/02 14:49:51 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	put_p(t_sl *sl, int r, int c, int *f)
 		*f = 1;
 		sl->vpm[r + 1][c] = 'P' ;
 	}
-	if (sl->vpm[r - 1][c] == '0' || sl->vpm[r][c - 1] == 'C')
+	if (sl->vpm[r - 1][c] == '0' || sl->vpm[r - 1][c] == 'C')
 	{
 		*f = 1;
 		sl->vpm[r - 1][c] = 'P' ;
@@ -94,7 +94,9 @@ int	ft_mcheck(char **p)
 		while (p[y][x])
 		{
 			if (p[y][x] == 'C')
+			{
 				c++;
+			}
 			x++;
 		}
 		y++;
