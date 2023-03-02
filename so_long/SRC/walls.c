@@ -6,15 +6,15 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:32:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 13:15:44 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/25 15:33:53 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_first_w(char *line, t_sl *sl)
+int	ft_first_w(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\n')
@@ -28,14 +28,13 @@ int ft_first_w(char *line, t_sl *sl)
 	return (1);
 }
 
-int ft_sides(char *line, t_sl *sl)
+int	ft_sides(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (line[i] != '1')
 		return (0);
-
 	while (line[i] != '\n')
 	{
 		if (!s_valid(line[i]))
@@ -47,16 +46,16 @@ int ft_sides(char *line, t_sl *sl)
 	return (1);
 }
 
-int s_valid(char c)
+int	s_valid(char c)
 {
 	if (c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E')
 		return (1);
 	return (0);
 }
 
-int ft_last(char *line, t_sl *sl)
+int	ft_last(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -69,10 +68,11 @@ int ft_last(char *line, t_sl *sl)
 		return (0);
 	return (1);
 }
-int ft_echeck(char **p)
+
+int	ft_echeck(char **p)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (p[y])
@@ -82,12 +82,12 @@ int ft_echeck(char **p)
 		{
 			if (p[y][x] == 'E')
 			{
-				if (p[y][x + 1] == 'P' || p[y][x - 1] == 'P' || p[y - 1][x] == 'P' || p[y + 1][x] == 'P')
-					return(0);
+				if (p[y][x + 1] == 'P' || p[y][x - 1] == 'P' || \
+				p[y - 1][x] == 'P' || p[y + 1][x] == 'P')
+					return (0);
 			}
 			x++;
 		}
-
 		y++;
 	}
 	return (-1);

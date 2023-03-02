@@ -6,16 +6,16 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 12:48:00 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 13:18:01 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/25 14:51:17 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_char(t_sl *sl)
+int	check_char(t_sl *sl)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (sl->map[i])
@@ -33,11 +33,7 @@ int check_char(t_sl *sl)
 		}
 		i++;
 	}
-	if (sl->p != 1)
-		return (-1);
-	if (sl->c == 0)
-		return (-1);
-	if (sl->e != 1)
+	if (sl->p != 1 || sl->c == 0 || sl->e != 1)
 		return (-1);
 	return (0);
 }

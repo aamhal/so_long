@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:16:34 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/23 14:01:04 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/27 18:03:12 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
 
 void	ft_putchar(char c, int *count);
 void	ft_putstr(char *s, int *count);

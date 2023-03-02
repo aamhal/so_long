@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wasd.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 11:28:25 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 15:34:37 by aamhal           ###   ########.fr       */
+/*   Created: 2023/02/27 18:11:29 by aamhal            #+#    #+#             */
+/*   Updated: 2023/02/27 19:04:05 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	find_player(t_sl *sl)
+void	ft_free(char **p)
 {
-	sl->py = 0;
-	while (sl->map[sl->py])
+	int	i;
+
+	i = 0;
+	while (p[i])
 	{
-		sl->px = 0;
-		while (sl->map[sl->py][sl->px])
-		{
-			if (sl->map[sl->py][sl->px] == 'P')
-				return ;
-			sl->px++;
-		}
-		sl->py++;
+		free(p[i]);
+		i++;
 	}
-}
-
-int	key_hook(int key, t_sl *sl)
-{
-	find_player(sl);
-	if (key == 53)
-		ft_close(sl);
-	else
-		moves(key, sl);
-	mlx_clear_window(sl->mlx, sl->win);
-	put_img(sl);
-	return (0);
+	free(p);
 }

@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:32:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/23 18:29:40 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/26 13:32:43 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_first_w(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\n')
@@ -30,12 +30,11 @@ int	ft_first_w(char *line, t_sl *sl)
 
 int	ft_sides(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (line[i] != '1')
 		return (0);
-	
 	while (line [i] != '\n')
 	{
 		if (!s_valid(line[i]))
@@ -49,14 +48,14 @@ int	ft_sides(char *line, t_sl *sl)
 
 int	s_valid(char c)
 {
-	   if (c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E' || c == 'M')
-            return (1);
-		return (0);
+	if (c == '0' || c == '1' || c == 'P' || c == 'C' || c == 'E' || c == 'M')
+		return (1);
+	return (0);
 }
 
 int	ft_last(char *line, t_sl *sl)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
@@ -68,4 +67,28 @@ int	ft_last(char *line, t_sl *sl)
 	if (i != sl->columns)
 		return (0);
 	return (1);
+}
+
+int	ft_echeck(char **p)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (p[y])
+	{
+		x = 0;
+		while (p[y][x])
+		{
+			if (p[y][x] == 'E')
+			{
+				if (p[y][x + 1] == 'P' || p[y][x - 1] == 'P' || \
+				p[y - 1][x] == 'P' || p[y + 1][x] == 'P')
+					return (0);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (-1);
 }

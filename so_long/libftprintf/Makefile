@@ -6,7 +6,7 @@
 #    By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 10:05:38 by aamhal            #+#    #+#              #
-#    Updated: 2023/02/23 19:24:46 by aamhal           ###   ########.fr        #
+#    Updated: 2023/02/27 18:03:25 by aamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ RM = rm -f
 OBJECTS    = $(SOURCE:.c=.o)
 
 %.o : %.c ft_printf.h
-	$(CC) $(FLAGS) -c $<
+	@$(CC) $(FLAGS) -c $<
 
 $(NAME) : $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -39,9 +39,9 @@ $(NAME) : $(OBJECTS)
 all: $(NAME)
     
 clean:
-	$(RM) $(OBJECTS) 
+	@$(RM) $(OBJECTS) 
 
 fclean: clean
-	$(RM) $(NAME) 
+	@$(RM) $(NAME) 
 
 re: fclean all

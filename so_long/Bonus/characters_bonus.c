@@ -6,16 +6,16 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 12:48:00 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/23 18:23:13 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/25 15:41:34 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int check_char(t_sl *sl)
+int	check_char(t_sl *sl)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (sl->map[i])
@@ -35,13 +35,7 @@ int check_char(t_sl *sl)
 		}
 		i++;
 	}
-	if (sl->p != 1)
-		return (-1);
-	if (sl->c == 0)
-		return (-1);
-	if (sl->m == 0)
-		return (-1);
-	if (sl->e != 1)
+	if (sl->p != 1 || sl->c == 0 || sl->m == 0 || sl->e != 1)
 		return (-1);
 	return (0);
 }

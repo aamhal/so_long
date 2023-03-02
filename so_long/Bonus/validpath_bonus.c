@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validpath.c                                        :+:      :+:    :+:   */
+/*   validpath_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 19:49:10 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/27 19:01:26 by aamhal           ###   ########.fr       */
+/*   Created: 2023/02/25 21:03:56 by aamhal            #+#    #+#             */
+/*   Updated: 2023/02/27 19:02:29 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	new_map(char *av, t_sl *sl)
 {
@@ -108,9 +108,6 @@ int	ft_mcheck(char **p)
 
 int	valid_path(char *av, t_sl *sl)
 {
-	int	i;
-
-	i = 0;
 	new_map(av, sl);
 	fill_map(sl);
 	if (ft_mcheck(sl->vpm) == -1)

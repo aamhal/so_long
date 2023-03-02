@@ -6,13 +6,13 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:50:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 13:31:44 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/02/26 13:53:06 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int moves(int key, t_sl *sl)
+int	moves(int key, t_sl *sl)
 {
 	if (key == 124 || key == 2)
 		m_right(sl);
@@ -25,144 +25,116 @@ int moves(int key, t_sl *sl)
 	return (0);
 }
 
-int m_right(t_sl*sl)
+void	m_right(t_sl*sl)
 {
 	sl->ppos = 1;
 	if (sl->map[sl->py][sl->px + 1] == '1')
-		return -1;
+		return ;
 	if (sl->map[sl->py][sl->px + 1] == 'M')
-		{
-			ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
-			exit(1);
-		}
-	if (sl->map[sl->py][sl->px+ 1] == '0')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		exit(1);
+	}
+	else if (sl->map[sl->py][sl->px + 1] == '0')
+	{
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->px += 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
-	else if (sl->map[sl->py][sl->px+ 1] == 'C')
+	else if (sl->map[sl->py][sl->px + 1] == 'C')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->px += 1;
 		sl->map[sl->py][sl->px] = 'P';
 		sl->c--;
 	}
-	else if (sl->map[sl->py][sl->px+ 1] == 'E' && sl->c == 0)
-	{
-		ft_printf("moves :%d\n",sl->moves++);
-		sl->map[sl->py][sl->px] = '0';
-		sl->px += 1;
-		sl->map[sl->py][sl->px] = 'P';
-		exit(1);
-	}
-	return (0);
+	else if (sl->map[sl->py][sl->px + 1] == 'E' && sl->c == 0)
+		r_exit(sl);
 }
 
-int m_left(t_sl*sl)
+void	m_left(t_sl*sl)
 {
 	sl->ppos = 2;
 	if (sl->map[sl->py][sl->px - 1] == '1')
-		return -1;
+		return ;
 	if (sl->map[sl->py][sl->px - 1] == 'M')
-		{
-			ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
-			exit(1);
-		}
-	if (sl->map[sl->py][sl->px - 1] == '0')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		exit(1);
+	}
+	else if (sl->map[sl->py][sl->px - 1] == '0')
+	{
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->px -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py][sl->px - 1] == 'C')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->px -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 		sl->c--;
 	}
 	else if (sl->map[sl->py][sl->px - 1] == 'E' && sl->c == 0)
-	{
-		ft_printf("moves :%d\n",sl->moves++);
-		sl->map[sl->py][sl->px] = '0';
-		sl->px -= 1;
-		sl->map[sl->py][sl->px] = 'P';
-		exit(1);
-	}
-	return (0);
+		l_exit(sl);
 }
 
-int m_up(t_sl *sl)
+void	m_up(t_sl *sl)
 {
 	if (sl->map[sl->py - 1][sl->px] == '1')
-		return -1;
+		return ;
 	if (sl->map[sl->py - 1][sl->px] == 'M')
-		{
-			ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
-			exit(1);
-		}
-	if (sl->map[sl->py - 1][sl->px] == '0')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		exit(1);
+	}
+	else if (sl->map[sl->py - 1][sl->px] == '0')
+	{
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->py -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py - 1][sl->px] == 'C')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->py -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 		sl->c--;
 	}
 	else if (sl->map[sl->py - 1][sl->px] == 'E' && sl->c == 0)
-	{
-		ft_printf("moves :%d\n",sl->moves++);
-		sl->map[sl->py][sl->px] = '0';
-		sl->py -= 1;
-		sl->map[sl->py][sl->px] = 'P';
-		exit(1);
-	}
-	return (0);
+		up_exit(sl);
 }
 
-int m_down(t_sl *sl)
+void	m_down(t_sl *sl)
 {
 	if (sl->map[sl->py + 1][sl->px] == '1')
-		return -1;
+		return ;
 	if (sl->map[sl->py + 1][sl->px] == 'M')
-		{
-			ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
-			exit(1);
-		}
-	if (sl->map[sl->py + 1][sl->px] == '0')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		exit(1);
+	}
+	else if (sl->map[sl->py + 1][sl->px] == '0')
+	{
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->py += 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py + 1][sl->px] == 'C')
 	{
-		ft_printf("moves :%d\n",sl->moves++);
+		ft_printf("moves :%d\n", sl->moves++);
 		sl->map[sl->py][sl->px] = '0';
 		sl->py += 1;
 		sl->map[sl->py][sl->px] = 'P';
 		sl->c--;
 	}
 	else if (sl->map[sl->py + 1][sl->px] == 'E' && sl->c == 0)
-	{
-		ft_printf("moves :%d\n",sl->moves++);
-		sl->map[sl->py][sl->px] = '0';
-		sl->py += 1;
-		sl->map[sl->py][sl->px] = 'P';
-		exit(1);
-	}
-	return (0);
+		down_exit(sl);
 }
