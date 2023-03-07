@@ -6,7 +6,7 @@
 #    By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 10:05:38 by aamhal            #+#    #+#              #
-#    Updated: 2023/02/27 18:03:25 by aamhal           ###   ########.fr        #
+#    Updated: 2023/03/06 15:21:39 by aamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ RM = rm -f
 OBJECTS    = $(SOURCE:.c=.o)
 
 %.o : %.c ft_printf.h
-	@$(CC) $(FLAGS) -c $<
+	@$(CC) $(FLAGS)  -c $< -o $@
 
 $(NAME) : $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)

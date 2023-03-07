@@ -6,7 +6,7 @@
 #    By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/17 08:52:58 by aamhal            #+#    #+#              #
-#    Updated: 2023/02/27 18:27:47 by aamhal           ###   ########.fr        #
+#    Updated: 2023/03/06 22:27:47 by aamhal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,17 @@ OBJ = $(SRC:.c=.o)
 BOBJ= $(BONUS:.c=.o)
 
 all : $(NAME)
-	@make -s -C $(FT)
+
+%.o : %.c SRC/so_long.h Bonus/so_long_bonus.h libftprintf/ft_printf.h
+	$(CC) $(CFLAGS)  -c $< -o $@
 
 $(NAME) : $(OBJ)
 	@make -s -C $(FT)
-	@$(CC) $(CFLAGS) $(OBJ) $(PRINTF) $(MLXF) -o $(NAME)
-	
-%.o : %.c so_long.h so_long_bonus.h
-	@$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) $(OBJ) $(PRINTF) $(MLXF) -o $(NAME)
 
 bonus : $(BOBJ)
 	@make -s -C $(FT)
-	@$(CC) $(CFLAGS) $(BOBJ) $(PRINTF) $(MLXF) -o $(NAMEB)
+	$(CC) $(CFLAGS) $(BOBJ) $(PRINTF) $(MLXF) -o $(NAMEB)
 
 clean :
 	@rm -rf libftprintf/*.o

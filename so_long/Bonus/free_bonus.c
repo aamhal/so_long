@@ -6,18 +6,18 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:11:29 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/27 19:04:05 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/02 18:27:08 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_free(char **p)
+void	ft_free(char **p, int j)
 {
 	int	i;
 
 	i = 0;
-	while (p[i])
+	while (i < j)
 	{
 		free(p[i]);
 		i++;

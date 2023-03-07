@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:35:42 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/26 13:51:00 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/07 17:05:48 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	l_exit(t_sl *sl)
 {
-	ft_printf("moves :%d\n", sl->moves++);
+	sl->moves++;
 	sl->map[sl->py][sl->px] = '0';
 	sl->px -= 1;
 	sl->map[sl->py][sl->px] = 'P';
@@ -23,7 +23,7 @@ void	l_exit(t_sl *sl)
 
 void	r_exit(t_sl *sl)
 {
-	ft_printf("moves :%d\n", sl->moves++);
+	sl->moves++;
 	sl->map[sl->py][sl->px] = '0';
 	sl->px += 1;
 	sl->map[sl->py][sl->px] = 'P';
@@ -32,7 +32,7 @@ void	r_exit(t_sl *sl)
 
 void	up_exit(t_sl *sl)
 {
-	ft_printf("moves :%d\n", sl->moves++);
+	sl->moves++;
 	sl->map[sl->py][sl->px] = '0';
 	sl->py -= 1;
 	sl->map[sl->py][sl->px] = 'P';
@@ -41,7 +41,7 @@ void	up_exit(t_sl *sl)
 
 void	down_exit(t_sl *sl)
 {
-	ft_printf("moves :%d\n", sl->moves++);
+	sl->moves++;
 	sl->map[sl->py][sl->px] = '0';
 	sl->py += 1;
 	sl->map[sl->py][sl->px] = 'P';

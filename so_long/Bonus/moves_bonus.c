@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:50:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/26 13:53:06 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/07 17:05:03 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	m_right(t_sl*sl)
 		return ;
 	if (sl->map[sl->py][sl->px + 1] == 'M')
 	{
-		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		ft_printf("YOU DIE");
 		exit(1);
 	}
 	else if (sl->map[sl->py][sl->px + 1] == '0')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->px += 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py][sl->px + 1] == 'C')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->px += 1;
 		sl->map[sl->py][sl->px] = 'P';
@@ -61,19 +61,19 @@ void	m_left(t_sl*sl)
 		return ;
 	if (sl->map[sl->py][sl->px - 1] == 'M')
 	{
-		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		ft_printf("YOU DIE");
 		exit(1);
 	}
 	else if (sl->map[sl->py][sl->px - 1] == '0')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->px -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py][sl->px - 1] == 'C')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->px -= 1;
 		sl->map[sl->py][sl->px] = 'P';
@@ -89,19 +89,19 @@ void	m_up(t_sl *sl)
 		return ;
 	if (sl->map[sl->py - 1][sl->px] == 'M')
 	{
-		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		ft_printf("YOU DIE");
 		exit(1);
 	}
 	else if (sl->map[sl->py - 1][sl->px] == '0')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->py -= 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py - 1][sl->px] == 'C')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->py -= 1;
 		sl->map[sl->py][sl->px] = 'P';
@@ -117,19 +117,19 @@ void	m_down(t_sl *sl)
 		return ;
 	if (sl->map[sl->py + 1][sl->px] == 'M')
 	{
-		ft_printf("||||||||||||||||YOU DIE||||||||||||||||");
+		ft_printf("YOU DIE");
 		exit(1);
 	}
 	else if (sl->map[sl->py + 1][sl->px] == '0')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->py += 1;
 		sl->map[sl->py][sl->px] = 'P';
 	}
 	else if (sl->map[sl->py + 1][sl->px] == 'C')
 	{
-		ft_printf("moves :%d\n", sl->moves++);
+		sl->moves++;
 		sl->map[sl->py][sl->px] = '0';
 		sl->py += 1;
 		sl->map[sl->py][sl->px] = 'P';

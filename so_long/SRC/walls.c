@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:32:04 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/25 15:33:53 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:11:53 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ int	ft_sides(char *line, t_sl *sl)
 		i++;
 	}
 	if (line[i - 1] != '1' || i != sl->columns)
+	{
 		return (0);
+	}
 	return (1);
 }
 

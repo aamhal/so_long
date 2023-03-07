@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:55:57 by aamhal            #+#    #+#             */
-/*   Updated: 2023/02/27 18:27:32 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/06 17:30:37 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	fill_map(t_sl *sl);
 int		ft_mcheck(char **p);
 int		valid_path(char *av, t_sl *sl);
 int		ft_echeck(char **p);
-void	des_img(t_sl *sl);
-void	ft_free(char **p);
+void	ft_free(char **p, int j);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 #endif

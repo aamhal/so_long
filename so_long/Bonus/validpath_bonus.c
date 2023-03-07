@@ -6,7 +6,7 @@
 /*   By: aamhal <aamhal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:03:56 by aamhal            #+#    #+#             */
-/*   Updated: 2023/03/02 14:48:07 by aamhal           ###   ########.fr       */
+/*   Updated: 2023/03/05 14:52:34 by aamhal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ int	valid_path(char *av, t_sl *sl)
 	fill_map(sl);
 	if (ft_mcheck(sl->vpm) == -1)
 	{
-		ft_free(sl->vpm);
+		ft_free(sl->vpm, sl->rows);
 		return (-1);
 	}
 	else
-		ft_free(sl->vpm);
+		ft_free(sl->vpm, sl->rows);
 	return (0);
 }
